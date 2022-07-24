@@ -12,9 +12,10 @@ class chip8 {
 private:
     unsigned char memory[4096]; // Memory of the chip8 system
     unsigned char V[16]; // Registers V0-VF
-    std::stack<unsigned short> stack; // Stack of addresses
+    unsigned short stack[16]; // Stack of addresses
     unsigned short I; // Index register
-    unsigned short pc; // Program counter
+    unsigned short PC; // Program counter
+    unsigned short SP; // Stack pointer
     unsigned short opcode; // Current opcode
     unsigned char sound_timer; // Sound timer
     unsigned char delay_timer; // Delay timer
@@ -50,14 +51,13 @@ public:
 
     void emulateCycle();
 
+    void tick();
+
+    void printState();
+
     bool drawFlag; // Draw flag
     unsigned char gfx[64 * 32]; // Graphics memory
-    unsigned char key[16] = {
-            '1', '2', '3', '4',
-            'Q', 'W', 'E', 'R',
-            'A', 'S', 'D', 'F',
-            'Y', 'X', 'C', 'V'
-    }; // Keypad
+    unsigned char key[16]; // Keypad
     SDL_Window *window; // Window
     SDL_Renderer *renderer; // Renderer
 };

@@ -19,7 +19,7 @@ void handleInput();
 
     // Initialize the chip8 system and load the game into the memory
     chip8.init();
-    chip8.loadGame("roms/test_opcode.ch8");
+    chip8.loadGame("../roms/test_opcode.ch8");
 
     // Emulation loop
     for (;;) {
@@ -37,6 +37,9 @@ void handleInput();
         // If the draw flag is set, update the screen
         if (chip8.drawFlag)
             drawGraphics();
+
+        // Tick the timers
+        chip8.tick();
     }
 }
 
