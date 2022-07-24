@@ -52,7 +52,7 @@ void drawGraphics() {
         } else {
             SDL_SetRenderDrawColor(chip8.renderer, 255, 255, 255, 255); // Draw white
         }
-        SDL_Rect rect = {i % 64, i / 64, 1, 1}; // Create a rectangle
+        SDL_Rect rect = {i % 64 * 10, i / 64 * 10, 10, 10}; // Create a rectangle
         SDL_RenderFillRect(chip8.renderer, &rect); // Draw the rectangle
     }
     SDL_RenderPresent(chip8.renderer); // Update the screen
